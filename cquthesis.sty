@@ -1,0 +1,174 @@
+\usepackage[
+  a4paper,
+  top=30mm,
+  bottom=25mm,
+  left=25mm,
+  right=25mm,
+  bindingoffset=10mm,
+  headsep=16mm,
+  footskip=15mm
+]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\allowdisplaybreaks[4]
+\numberwithin{figure}{section}
+\numberwithin{equation}{section}
+\numberwithin{table}{section}
+
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tocloft}
+\usepackage{titletoc}
+\usepackage{titlesec}
+\usepackage{caption}
+\usepackage{etoolbox}
+\usepackage{indentfirst}
+\usepackage[hidelinks]{hyperref}
+\usepackage[sort&compress]{gbt7714}
+
+\IfFileExists{font/TimesNewRoman-Regular.ttf}
+  {\setmainfont[
+      Path=font/,
+      Extension=.ttf,
+      UprightFont=TimesNewRoman-Regular,
+      BoldFont=TimesNewRoman-Bold,
+      ItalicFont=TimesNewRoman-Italic,
+      BoldItalicFont=TimesNewRoman-BoldItalic
+    ]{TimesNewRoman-Regular}}
+  {\IfFontExistsTF{Times New Roman}
+    {\setmainfont{Times New Roman}}
+    {\setmainfont{TeX Gyre Termes}}}
+
+\IfFileExists{font/NimbusMonoPS-Regular.otf}
+  {\setmonofont[
+      Path=font/,
+      Extension=.otf,
+      UprightFont=NimbusMonoPS-Regular,
+      BoldFont=NimbusMonoPS-Bold,
+      ItalicFont=NimbusMonoPS-Italic,
+      BoldItalicFont=NimbusMonoPS-BoldItalic
+    ]{NimbusMonoPS-Regular}}
+  {\setmonofont{Latin Modern Mono}}
+
+\setCJKmainfont[Path=font/,AutoFakeBold=2.5]{STSong.ttf}
+\setCJKsansfont[Path=font/,AutoFakeBold=2.5]{STHeiti.ttf}
+\setCJKmonofont[Path=font/,AutoFakeBold=2.5]{STSong.ttf}
+\newCJKfontfamily\cqusong[Path=font/,AutoFakeBold=2.5]{STSong.ttf}
+\newCJKfontfamily\cquhei[Path=font/,AutoFakeBold=2.5]{STHeiti.ttf}
+\newCJKfontfamily\cqukai[Path=font/,AutoFakeBold=2.5]{STKaiti.ttf}
+\newcommand{\songti}{\cqusong}
+\newcommand{\heiti}{\cquhei}
+\newcommand{\kaishu}{\cqukai}
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+\makeatletter
+\renewcommand\normalsize{%
+  \@setfontsize\normalsize{12pt}{20pt}%
+  \abovedisplayskip 12pt plus 3pt minus 7pt%
+  \abovedisplayshortskip \z@ plus 3pt%
+  \belowdisplayshortskip 6.5pt plus 3.5pt minus 3pt%
+  \belowdisplayskip \abovedisplayskip%
+  \let\@listi\@listI
+}
+\makeatother
+\normalsize
+
+\setlength{\headheight}{15pt}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\zihao{-5}\thepage}
+
+\makeatletter
+\def\headrule{%
+  \if@fancyplain\let\headrulewidth\plainheadrulewidth\fi%
+  \hrule\@height 0.5pt \@width\headwidth\vskip1.5pt%
+  \vskip-2\headrulewidth\vskip-1pt}
+\makeatother
+
+\makeatletter
+\newcommand{\cqusetheader}[1]{%
+  \fancyhf{}%
+  \fancyfoot[C]{\zihao{-5}\thepage}%
+  \if@twoside
+    \fancyhead[CE]{\songti\zihao{-5}重庆大学本科学生毕业论文（设计）}%
+    \fancyhead[CO]{\songti\zihao{-5}#1}%
+  \else
+    \fancyhead[L]{\songti\zihao{-5}重庆大学本科学生毕业论文（设计）}%
+    \fancyhead[R]{\songti\zihao{-5}#1}%
+  \fi
+  \pagestyle{fancy}%
+}
+\makeatother
+
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\zihao{-5}\thepage}%
+  \renewcommand{\headrulewidth}{0.5pt}%
+}
+
+\titleformat{\section}
+  {\centering\heiti\zihao{3}}
+  {\thesection}
+  {0.75em}
+  {}
+\titleformat{\subsection}
+  {\heiti\zihao{-3}}
+  {\thesubsection}
+  {0.75em}
+  {}
+\titleformat{\subsubsection}
+  {\heiti\zihao{4}}
+  {\thesubsubsection}
+  {0.75em}
+  {}
+
+\titlespacing*{\section}{0pt}{0pt}{20pt}
+\titlespacing*{\subsection}{0pt}{20pt}{10pt}
+\titlespacing*{\subsubsection}{0pt}{10pt}{10pt}
+
+\titlecontents{section}[0pt]
+  {\heiti\zihao{4}}
+  {\contentslabel{2.3em}}
+  {}
+  {\hfill\contentspage}
+\titlecontents{subsection}[2.3em]
+  {\heiti\zihao{5}}
+  {\contentslabel{2.8em}}
+  {}
+  {\hfill\contentspage}
+\titlecontents{subsubsection}[5.1em]
+  {\songti\zihao{5}}
+  {\contentslabel{3.3em}}
+  {}
+  {\hfill\contentspage}
+
+\renewcommand\contentsname{目\quad 录}
+\renewcommand\refname{参考文献}
+\renewcommand{\cftdotsep}{1}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\captionsetup{
+  font=small,
+  labelsep=quad
+}
+
+\AtBeginEnvironment{figure}{\centering}
+\AtBeginEnvironment{table}{\centering}
+
+\makeatletter
+\let\oldthebibliography\thebibliography
+\let\endoldthebibliography\endthebibliography
+\renewenvironment{thebibliography}[1]{%
+  \begin{oldthebibliography}{#1}%
+    \setlength{\itemsep}{0pt}%
+    \setlength{\parsep}{0pt}%
+}{%
+  \end{oldthebibliography}%
+}
+\makeatother

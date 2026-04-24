@@ -1,0 +1,18 @@
+\clearpage
+\cqusetheader{目录}
+\makeatletter
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\zihao{-5}\thepage}%
+  \if@twoside
+    \fancyhead[CE]{\songti\zihao{-5}重庆大学本科学生毕业论文（设计）}%
+    \fancyhead[CO]{\songti\zihao{-5}目录}%
+  \else
+    \fancyhead[L]{\songti\zihao{-5}重庆大学本科学生毕业论文（设计）}%
+    \fancyhead[R]{\songti\zihao{-5}目录}%
+  \fi
+  \renewcommand{\headrulewidth}{0.5pt}%
+}
+\makeatother
+\tableofcontents
+\clearpage
