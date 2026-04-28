@@ -1,10 +1,21 @@
+\newif\ifcquscreenmode
+\DeclareOption{screen}{\cquscreenmodetrue}
+\DeclareOption{print}{\cquscreenmodefalse}
+\ExecuteOptions{print}
+\ProcessOptions\relax
+
+\newcommand{\cqubindingoffset}{10mm}
+\ifcquscreenmode
+  \renewcommand{\cqubindingoffset}{0mm}
+\fi
+
 \usepackage[
   a4paper,
   top=30mm,
   bottom=25mm,
   left=25mm,
   right=25mm,
-  bindingoffset=10mm,
+  bindingoffset=\cqubindingoffset,
   headsep=16mm,
   footskip=15mm
 ]{geometry}

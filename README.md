@@ -16,7 +16,8 @@
 
 ```text
 .
-├── main.tex                 # 论文入口文件，控制整体页面顺序
+├── main.tex                 # 学校提交打印版入口，双面排版
+├── main-screen.tex          # 电子阅读版入口，单面居中排版
 ├── metadata.tex             # 论文题目、作者、导师、学院、日期、关键词等信息
 ├── cquthesis.sty            # 模板格式配置
 ├── ref.bib                  # BibTeX 参考文献数据库
@@ -60,7 +61,7 @@ cd cqu-thesis-latex-template
 
 ### 4. 编写正文
 
-正文内容位于 `content/` 目录。默认章节入口在 `main.tex` 中：
+正文内容位于 `content/` 目录。默认章节入口在 `main.tex` 和 `main-screen.tex` 中保持一致：
 
 ```tex
 \input{content/1-section1.tex}
@@ -88,6 +89,12 @@ cd cqu-thesis-latex-template
 latexmk -xelatex main.tex
 ```
 
+电子阅读版可编译为：
+
+```bash
+latexmk -xelatex main-screen.tex
+```
+
 也可以手动编译：
 
 ```bash
@@ -98,6 +105,12 @@ xelatex main.tex
 ```
 
 编译成功后会生成 `main.pdf`。
+
+## 打印版与电子版
+
+- `main.tex` 为学校提交打印版，默认采用 `twoside` 双面排版，并保留 10mm 装订线，适合按学校规范打印装订。
+- `main-screen.tex` 为电子阅读版，采用 `oneside` 单面排版，并通过 `\usepackage[screen]{cquthesis}` 取消装订线，使各页版心保持居中。
+- 两个入口共用同一套 `content/`、`metadata.tex` 和 `ref.bib`，因此正文内容只需要维护一份。
 
 ## 常用修改
 
@@ -114,6 +127,8 @@ xelatex main.tex
 ```tex
 \documentclass[UTF8,a4paper,12pt,fontset=none]{ctexart}
 ```
+
+如果希望保留模板的双版本结构，建议直接使用现成的 `main-screen.tex`，而不要手工改动 `main.tex`。
 
 ### 页眉标题
 
