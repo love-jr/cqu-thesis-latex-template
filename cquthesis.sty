@@ -51,16 +51,18 @@
     {\setmainfont{Times New Roman}}
     {\setmainfont{TeX Gyre Termes}}}
 
-\IfFileExists{font/NimbusMonoPS-Regular.otf}
+\IfFileExists{font/TimesNewRoman-Regular.ttf}
   {\setmonofont[
       Path=font/,
-      Extension=.otf,
-      UprightFont=NimbusMonoPS-Regular,
-      BoldFont=NimbusMonoPS-Bold,
-      ItalicFont=NimbusMonoPS-Italic,
-      BoldItalicFont=NimbusMonoPS-BoldItalic
-    ]{NimbusMonoPS-Regular}}
-  {\setmonofont{Latin Modern Mono}}
+      Extension=.ttf,
+      UprightFont=TimesNewRoman-Regular,
+      BoldFont=TimesNewRoman-Bold,
+      ItalicFont=TimesNewRoman-Italic,
+      BoldItalicFont=TimesNewRoman-BoldItalic
+    ]{TimesNewRoman-Regular}}
+  {\IfFontExistsTF{Times New Roman}
+    {\setmonofont{Times New Roman}}
+    {\setmonofont{TeX Gyre Termes}}}
 
 \setCJKmainfont[Path=font/,AutoFakeBold=2.5]{STSong.ttf}
 \setCJKsansfont[Path=font/,AutoFakeBold=2.5]{STHeiti.ttf}
